@@ -1,0 +1,32 @@
+@page
+@model TareasModel
+@{
+    ViewData["Title"] = "Seguimiento de Tareas Spartane";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4 text-primary">Seguimiento de Proyectos Spartane</h2>
+
+    <table class="table table-hover table-striped shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Tarea</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Fecha Límite</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Itera sobre la lista de tareas generada en el código C# *@
+            @foreach (var tarea in Model.Tareas)
+            {
+                <tr>
+                    <td>@tarea.Titulo</td>
+                    <td>
+                        <span class="badge @tarea.CSSClaseEstado">@tarea.Estado</span>
+                    </td>
+                    <td>@tarea.FechaLimite.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
